@@ -1,0 +1,1 @@
+(()=>{let e=document.createElement("h1"),t=document.getElementById("content");e.textContent="Hello Todolist",t.appendChild(e)})();
