@@ -1,0 +1,12 @@
+.nav-bar-cont {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    height: 80px;
+    background-color: var(--p-dark);
+    color: var(--text-on-color);
+}
+
+.nav-bar-cont:hover {
+    cursor: pointer;
+}

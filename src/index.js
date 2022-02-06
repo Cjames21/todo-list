@@ -1,7 +1,5 @@
-let el = document.createElement('h1');
-let content = document.getElementById('content');
+import firstLoad from "./DOM/utils/firstLoad.js";
 
-el.textContent = "Hello Todolist";
+import './index.css';
 
-
-content.appendChild(el);
+firstLoad();
