@@ -4,6 +4,7 @@ const navBar = () => {
     let content = document.getElementById('content');
     let navBarContainer = document.createElement('div');
     navBarContainer.className = "nav-bar-cont";
+    navBarContainer.setAttribute("id", "navBarCont");
     navBarContainer.appendChild(navBarLogo());
     content.appendChild(navBarContainer);  
 

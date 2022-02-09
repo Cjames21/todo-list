@@ -1,4 +1,4 @@
-import {getProjList} from '../../Logic/listManip/retrieveProjFromAPI.js';
+import {getProjList} from '../../../Logic/listManip/retrieveProjFromAPI.js';
 
 const fetchProjects = () => {
     // list validation/JSON unpacking eventually

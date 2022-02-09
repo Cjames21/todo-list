@@ -8,11 +8,11 @@ const getProjList = () => {
 }
 
 const addProj = (proj) => {
-    list.push(proj);
+    projectList.push(proj);
 }
 
 const removeProj = (index) => {
-    list.splice(index, 1);
+    projectList.splice(index, 1);
 }
 
 export {getProjList, addProj, removeProj};

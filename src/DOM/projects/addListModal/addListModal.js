@@ -1,4 +1,5 @@
-import {addProj} from '../../../Logic/listManip/retrieveProjFromAPI.js'
+import {addProj} from '../../../Logic/listManip/retrieveProjFromAPI.js';
+import renderProjList from '../utils/renderProjectList.js';
 
 import './addListModal.css';
 
@@ -6,13 +7,29 @@ const addListModal = () => {
     let mBlackoutContainer = document.createElement('div');
     mBlackoutContainer.className = "blackout-container";
     mBlackoutContainer.setAttribute("id", "blackoutContainer");
+    mBlackoutContainer.addEventListener('keypress', (e) => {
+        if(e.key === 13) {
+            submitInput();
+        }
+    })
 
 
     let mModalCont = document.createElement('div');
     mModalCont.className = "modal-cont";
     mModalCont.setAttribute("id", "add-list-modal");
 
-    let mPrompt = createElement('p');
+    let mExitBtn = document.createElement('div');
+    let x = document.createElement('p');
+    x.textContent = "x";
+    mExitBtn.appendChild(x);
+    mExitBtn.className= "btn-exit-modal";
+    mExitBtn.setAttribute("id", "btnExitModal");
+    mExitBtn.addEventListener("click", () => {
+        clearModal();        
+    })
+    mModalCont.appendChild(mExitBtn);
+
+    let mPrompt = document.createElement('p');
     mPrompt.textContent = "Please enter your projects title."
 
     let mInputTitleLabel = document.createElement('label');
@@ -33,13 +50,7 @@ const addListModal = () => {
     mSubmitBtn.setAttribute("id", "modalAddProjToList");
     mSubmitBtn.textContent = "Submit";
     mSubmitBtn.addEventListener("click", () => {
-        let t = document.getElementById('projTitle');
-        let tString = t.textContent;
-        console.log(tString)
-        // addProj(tString);
-        // TODO: Finish component
-        // Clear modal
-        // Rerender list, need to flesh out the modules.
+        submitInput();
     })
 
     mModalCont.appendChild(mSubmitBtn);
@@ -47,5 +58,29 @@ const addListModal = () => {
     
     return mBlackoutContainer;
 }
+
+function clearModal() {
+    let el = document.getElementById('content');
+    let children = el.childNodes;
+    children.forEach((element) => {
+        if(element.id === "blackoutContainer") {
+            let input = document.getElementById('projTitle');
+            input.textContent = "";
+            element.remove();
+        }
+    })
+}
+
+function submitInput() {
+    let t = document.getElementById('projTitle');
+    let tString = t.value;
+    addProj(tString);
+    clearModal();
+    renderProjList();
+}
+
+
+// TODO when modal is opened, set focus to the input field
+// TODO add event listener for 'enter' key pressed to screen when modal is opened to activate the  submit button functionality
 
 export default addListModal;

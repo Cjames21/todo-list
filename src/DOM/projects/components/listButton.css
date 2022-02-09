@@ -2,15 +2,16 @@
     background-color: var(--p-dark);
     display: flex;
     justify-content: center;
+    align-items: center;
     width: 250px;
     height: 250px;
     margin: 40px;
     padding: 20px;
+    border-radius: 8px;
+    color: var(--text-on-color);
+    font-size: 4em;
+    cursor: pointer;
 }
 
-.panel-text {
-    position: relative;
-    top: 10%;
-    color: var(--text-on-color);
-}
+
 
