@@ -1,4 +1,4 @@
-import {addProj} from '../../../Logic/listManip/retrieveProjFromAPI.js';
+import {addProj} from '../../../Backend/projects/retrieveProjFromAPI.js';
 import renderProjList from '../utils/renderProjectList.js';
 
 import './addListModal.css';
