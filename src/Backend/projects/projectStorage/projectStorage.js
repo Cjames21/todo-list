@@ -5,12 +5,14 @@ import taskModel from '../models/taskModel.js';
 /*
     Controls all functionality that has to do with managing the user's projects,
 
-    TODO extend functionality
+    TODO extend functionality, also get better at writing these todo comments
 */
 
 
 const projects = (() => {
+    let projectObj = projectModel("test");
     const projList = [];
+    projList.push(projectObj);
 
     // possibly send a flag letting "front end" know if list is empty or not. 
     const getProjList = () => {

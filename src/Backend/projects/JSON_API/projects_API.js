@@ -6,7 +6,7 @@ import projectStorage from '../projectStorage/projectStorage.js';
     Takes in JSON, maps data to corresponding data, stores, removes, edits requested data.
 */
 
-const projectListAPI = () => {
+const projectListAPI = (() => {
     let projList = projectStorage.getProjList();
 
     const getProjectList = () => {
@@ -14,6 +14,7 @@ const projectListAPI = () => {
     }
     
     const addProjectToList = (projectTitle) => {
+        console.log("API file line 18 projTitle var: " + projectTitle);
         projectStorage.addProj(projectTitle);
     }
     
@@ -25,8 +26,13 @@ const projectListAPI = () => {
         // TODO: add functionality
     } 
     
-    return {getProjectList, addProjectToList, removeProjectFromList, editProjTitle}
-}
+    return {
+        getProjectList,
+        addProjectToList,
+        removeProjectFromList,
+        editProjTitle
+    }
+})();
 
 export default projectListAPI;
 

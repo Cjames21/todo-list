@@ -1,7 +1,9 @@
-import {addProj} from '../../../Backend/projects/retrieveProjFromAPI.js';
+import projectListAPI from '../../../Backend/projects/JSON_API/projects_API.js';
 import renderProjList from '../utils/renderProjectList.js';
 
 import './addListModal.css';
+
+// TODO extract elements into their own functions and put them into the main component
 
 const addListModal = () => {
     let mBlackoutContainer = document.createElement('div');
@@ -74,7 +76,7 @@ function clearModal() {
 function submitInput() {
     let t = document.getElementById('projTitle');
     let tString = t.value;
-    addProj(tString);
+    projectListAPI.addProjectToList(tString);
     clearModal();
     renderProjList();
 }

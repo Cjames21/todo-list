@@ -6,9 +6,7 @@ import listButton from '../components/listButton.js';
 const renderProjList = () => {
     let mProjectList = fetchProjects();
     clrScreen();
-    if(mProjectList.length != 0) {
-        
-    
+    if(mProjectList.length != 0) {    
         let mContent =  document.getElementById('content');
         let mProjCont = document.createElement('div');
         mProjCont.className = "proj-cont";
@@ -16,7 +14,7 @@ const renderProjList = () => {
     
         
         mProjectList.forEach(proj => {
-            let newBtn = listButton(proj);
+            let newBtn = listButton(proj.getProjectTitle());
             mProjCont.appendChild(newBtn);        
         })
     
@@ -30,8 +28,6 @@ const renderProjList = () => {
 
         mContent.appendChild(mProjCont);
     } else {
-        console.log("Error: mProjectList is still being a bitch.");
-
         let mContent =  document.getElementById('content');
         let mProjCont = document.createElement('div');
         mProjCont.className = "proj-cont";
@@ -45,8 +41,7 @@ const renderProjList = () => {
         mProjCont.appendChild(mNewProjBtn);
 
         mContent.appendChild(mProjCont);
-    }
-    
+    }    
 }
 
 export default renderProjList;
