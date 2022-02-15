@@ -1,9 +1,9 @@
 import navBar from '../nav-bar/navBar.js';
 import projectsView from '../projects/projects-view/projectsView.js';
 
-const firstLoad = () => {
+const firstLoad = (projectList) => {
     navBar();
-    projectsView();
+    projectsView(projectList);
 }
 
 export default firstLoad;

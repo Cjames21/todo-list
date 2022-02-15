@@ -3,11 +3,8 @@ import renderProjectList from '../utils/renderProjectList';
 
 import './projectsView.css'
 
-let projectsView = () => {
-
-    renderProjectList();    
-
-    
+const projectsView = (projList) => {
+    renderProjectList(projList);      
 }
 
 export default projectsView;

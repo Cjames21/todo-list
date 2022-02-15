@@ -6,6 +6,8 @@ const projectModel = (title) => {
 
     const setProjectTitle = (newTitle) => projectTitle = newTitle;
 
+    const getObjectiveList = () => objectiveList;
+
     const addObjective = (objective) => objectiveList.push(objective);
 
     const editObjective = (editedObjective) => {
@@ -23,6 +25,7 @@ const projectModel = (title) => {
     return {
         getProjectTitle,
         setProjectTitle,
+        getObjectiveList,
         addObjective,
         editObjective,
         removeObjective

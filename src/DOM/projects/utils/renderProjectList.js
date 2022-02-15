@@ -3,8 +3,8 @@ import clrScreen from '../../utils/clearScreen.js';
 import addProjModal from '../addListModal/addListModal.js';
 import listButton from '../components/listButton.js';
 
-const renderProjList = () => {
-    let mProjectList = fetchProjects();
+const renderProjList = (projList) => {
+    let mProjectList = projList;
     clrScreen();
     if(mProjectList.length != 0) {    
         let mContent =  document.getElementById('content');

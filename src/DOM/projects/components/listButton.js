@@ -1,4 +1,5 @@
-import addProjModal from "../addListModal/addListModal.js";
+import indexModule from '../../../index.js';
+
 import "./listButton.css";
 
 const listButton = (text) => {
@@ -11,6 +12,7 @@ const listButton = (text) => {
     button.addEventListener("click", (e) => {
         // TODO
         // Open the project page associated with project selected
+        indexModule.renderProject(text);
     })
     return button;
 }
