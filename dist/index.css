@@ -1,0 +1,26 @@
+:root {
+    --off-white: #f9f9fB;
+    --grid-background: #E7E9EB;
+}
+
+body {
+    max-width: 100vw;
+    width: 100vw;
+    max-height: 100vh;
+    height: 100vh;
+    margin: 0
+}
+
+.layout-container {
+    display: grid;
+    grid-template-columns: 1fr 5fr;    
+    max-width: 100vw;
+    width: 100vw;
+    max-height: 100vh;
+    height: 100vh;
+}
+
+.projects-sidebar {
+    background-color: var(--off-white);
+    height: 100%;
+}

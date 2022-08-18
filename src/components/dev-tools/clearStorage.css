@@ -1,0 +1,8 @@
+.hover-pointer:hover {
+    cursor: pointer;
+}
+
+.btn-delete-lists {
+    align-self: flex-end;
+    margin-top: 90%;
+}

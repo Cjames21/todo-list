@@ -1,0 +1,11 @@
+
+.task-item {
+    cursor: pointer;
+    transition: border-top-left-radius 0s;
+    transition: border-top-right-radius 0s;
+    transition: background-color 1s;
+}
+
+.task-item:hover {
+    background-color: #5B5B5B;
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List Project</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet"> 
+</head>
+<body>
+    <div class="container-layout">
+        <div class="sidebar" id="sidebar">   
+            <!-- Could add a panel here to show the users profile eventually -->
+            <div class="shortcuts">
+                <div class="collect-inline">
+                    <h1 class="header">Shortcuts</h1>
+                    <button id="collapse-list" class="btn-sidebar hover-pointer">^</button>
+                </div>
+                <div class="shortcuts-list">                
+                    <p class="hover-underline" id="shortcut-today">Today</p>
+                    <p class="hover-underline" id="shortcut-seven-days">Next 7 Days</p>
+                    <p class="hover-underline" id="shortcut-all-tasks">All Tasks</p>
+                </div>
+            </div>
+            <div class="lists">
+                <div class="collect-inline">
+                    <h1 class="header">Lists</h1>
+                    <button id="collapse-list" class="btn-sidebar hover-pointer">^</button>
+                    <button id="addNewList" class="btn-sidebar hover-pointer">+</button>
+                </div>
+                <div class="sidebar-lists-list">
+                    <p class="hover-underline">Personal</p>
+                    <p class="hover-underline">Work</p>
+                    <p class="hover-underline">Grocery List</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-container">
+            <div id="content-container" class="dark-overlay">
+                <!-- content -->
+            </div>
+        </div>        
+    </div>
+    <script src="bundle.js"></script>
+</body>
+</html>

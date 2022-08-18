@@ -1,0 +1,14 @@
+{
+  "name": "todo-app",
+  "version": "1.0.0",
+  "description": "Basic todo list app",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "Charles James",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^5.74.0"
+  }
+}
