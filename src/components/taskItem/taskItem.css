@@ -6,6 +6,10 @@
     transition: background-color 1s;
 }
 
+.task-item .task-category {
+    margin-left: 2rem;
+}
+
 .task-item:hover {
-    background-color: #5B5B5B;
+    background-color: var(--hover-accent);
 }

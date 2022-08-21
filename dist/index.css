@@ -24,3 +24,16 @@ body {
     background-color: var(--off-white);
     height: 100%;
 }
+
+.sidebar {
+    padding-left: 0 !important;
+}
+
+.shortcuts>*, .lists>* {
+    padding-left: 32px;
+}
+
+.lists .header {
+    margin-top: 32px;
+    margin-bottom: 8px;
+}

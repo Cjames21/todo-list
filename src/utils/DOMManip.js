@@ -19,13 +19,10 @@ const DOMManip = (() => {
     let content = document.getElementById('content-container');
 
     const initPageListsExist = (list) => {
-        console.log('lists exist');
         content.appendChild(TaskListContainer(list));
-        content.appendChild(DeleteStorage());
     }
 
     const initPageNoLists = () => {
-        console.log('no lists');
         let currentList = 'DEFAULT';
         let lists = [];
         let taskList = [];
@@ -33,15 +30,18 @@ const DOMManip = (() => {
         lists.push(ListObject(currentList, taskList));
 
         content.appendChild(TaskListContainer(lists[0]));
-        content.appendChild(DeleteStorage());
-        console.log('Default tasak list initialized: ');
-        console.log({
-            lists
-        });
         return lists;
     }
 
     const initPage = (lists, currentList) => {
+        content.innerHTML = '';
+        let listTitle = document.createElement('h1');
+        listTitle.classList = 'list-header';
+        listTitle.textContent = currentList;
+        content.appendChild(listTitle);
+
+
+
         if (lists === null || lists === undefined || lists.length === 0) {
             lists = initPageNoLists();
             StorageAPI.saveToLocalStorage(lists);
@@ -59,34 +59,44 @@ const DOMManip = (() => {
         }
 
         let sidebarLists = document.getElementById('lists-list');
+        sidebarLists.innerHTML = '';
         lists.forEach(list => {
-            sidebarLists.appendChild(sidebarListButton(list.category));
+            addListToSidebar(list.category);
         });
+        sidebarLists.appendChild(DeleteStorage());
     }
 
-    const refreshPage = () => {
-        content.textContent='';
-        initPage(StorageAPI.getLocalStorageLists(), 'DEFAULT');
+    const refreshPage = (category) => {
+        content.textContent = '';
+        let lists = StorageAPI.getLocalStorageLists();
+
+        let sidebarLists = document.getElementById('lists-list');
+        while (sidebarLists.innerHTML !== '') {
+            sidebarLists.innerHTML = '';
+        }
+
+        initPage(lists, category);
+
     }
 
     const refreshList = (category) => {
         let lists = StorageAPI.getLocalStorageLists();
         let li = null;
-        
+
         lists.forEach(l => {
-            if(l.category === category) {
+            if (l.category === category) {
                 li = l;
             }
         });
 
-        if(li !== null) {
+        if (li !== null) {
             let lContainer = document.getElementById('list-container');
             lContainer.textContent = '';
             li.tasks.forEach(task => {
                 addTaskToListDOM(task);
             })
-        } else console.log('function refreshList(): Something went wrong assigning value to {li}');
-    }  
+        }
+    }
 
     const addTaskToListDOM = (task) => {
         // save task to task list throuh storageAPI, then update current list
@@ -109,10 +119,9 @@ const DOMManip = (() => {
 
     const enableNewListInput = () => {
         let listsList = document.getElementById('lists-list');
-        if(listsList !== null && listsList.lastChild.id !== 'new-list-input') {
+        if (listsList !== null && listsList.lastChild.id !== 'new-list-input') {
             listsList.appendChild(NewListInput());
-        }        
-        console.log(listsList.lastChild);
+        }
     }
 
     const disableNewListInput = () => {
@@ -125,22 +134,6 @@ const DOMManip = (() => {
         sidebarLists.appendChild(sidebarListButton(category));
     }
 
-    /* const refreshSideBarLists = () => {
-        // TODO: get new listsList and add it to the sidebar
-        let lists = StorageAPI.getLocalStorageLists();        
-        let listsList = document.getElementById('lists-list');
-        console.log({listsList});
-        console.log({lists});
-
-        while(listsList.lastChild) {
-            listsList.removeChild(listsList.lastChild);
-        }
-
-        lists.forEach(li => {
-            listsList.appendChild(sidebarListButton(li.category));
-        });
-    } */
-
     return {
         initPage,
         refreshPage,
@@ -150,7 +143,6 @@ const DOMManip = (() => {
         enableNewListInput,
         disableNewListInput,
         addListToSidebar
-        // refreshSideBarLists
     }
 
 })();

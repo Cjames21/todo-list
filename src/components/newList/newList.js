@@ -13,6 +13,7 @@ const NewListInput = () => {
 
     let input = document.createElement('input');
     input.type = 'text';
+    input.id = 'new-list-input';
     inputContainer.appendChild(input);
     input.addEventListener('keydown', (e) => {
         if (e.key === 'Enter') {
@@ -36,8 +37,8 @@ const NewListInput = () => {
         // TODO: add list to storage, switch dom to show new list
         if(input.value !== null & input.value.length > 3) {
             StorageAPI.addList(input.value);
-            DOMManip.addListToSidebar();
             DOMManip.disableNewListInput();
+            DOMManip.addListToSidebar(input.value);
         } else {
             console.log('Input value did not pass logic checks: ' + input.value);
         }

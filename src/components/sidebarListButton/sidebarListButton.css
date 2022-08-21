@@ -1,0 +1,24 @@
+
+.list-button {
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    align-items: center;
+    margin:0;
+    padding: 16px 0px 16px 8px;
+    transition: background-color 1s;
+}
+
+.list-button:hover {
+    cursor: pointer;
+    background-color: var(--hover-item);
+}
+
+.list-button p {
+    margin: 0;
+}
+
+.list-button i {
+    justify-self: end;
+    align-self: center;
+    margin-right: 2rem;
+}

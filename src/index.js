@@ -6,13 +6,13 @@ import DOMManip from './utils/DOMManip.js';
 
 let currentList = 'DEFAULT';
 let lists = StorageAPI.getLocalStorageLists();
-console.log(lists);
 
 DOMManip.initPage(lists, currentList);
 
 let btnAddList = document.getElementById('addNewList');
 btnAddList.addEventListener('click', () => {
     DOMManip.enableNewListInput();
+    let input = document.getElementById('new-list-input').focus();
 });
 
 let sidebarListsContainer = document.getElementById('lists-list').children;

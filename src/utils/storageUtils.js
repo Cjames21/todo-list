@@ -17,7 +17,6 @@ const StorageAPI = (() => {
     */
     function addList(list) {
         let lists = StorageAPI.getLocalStorageLists();
-        console.log(lists);
         let listObj = TaskList(list, []);
         if (lists !== null && listObj !== null) {
             lists.forEach(l => {
@@ -28,8 +27,6 @@ const StorageAPI = (() => {
             });
             lists.push(listObj);
             saveToLocalStorage(lists);
-        } else {
-            console.log('function addList() was passed null value');
         }
     }
 
@@ -43,33 +40,25 @@ const StorageAPI = (() => {
         if (list.category !== null) {
             lists = lists.map(l => {
                 if (l.category === list.category) {
-                    console.log('Conditionals passed.');
-                    console.log({
-                        l
-                    });
-                    console.log({
-                        list
-                    });
                     l = list;
                     return l;
                 }
             });
         }
-        console.log(lists);
         saveToLocalStorage(lists);
     }
 
-    // TODO: Update to handle refactoring of codebase (removal of lists array in this file)
     function removeList(listName) {
+        let lists = getLocalStorageLists();
         if (lists.length > 0) {
             lists.forEach(element => {
                 if (element.category === listName) {
                     lists.splice(indexOf(element), 1);
                 }
             });
+            saveToLocalStorage(lists);
             return;
         }
-        console.log('no list in given listName variable: ' + list);
     }
 
     function removeTaskFromList(task) {
@@ -77,16 +66,8 @@ const StorageAPI = (() => {
 
         lists.forEach(list => {
             if (list.category === task.category) {
-                console.log('Logging list in removeTaskFromList: ');
-                console.log({
-                    list
-                });
-
                 let newTaskList = list.tasks.filter(t => {
-                    console.log(t.text);     
-                    console.log(task.text);
-                    if(t.text !== task.text) {
-                        console.log('Text matches.');
+                    if (t.text !== task.text) {
                         return t;
                     }
                 });
@@ -120,13 +101,9 @@ const StorageAPI = (() => {
     }
 
     function saveToLocalStorage(lists) {
-        console.log('Saving lists: ');
-        console.log({
-            lists
-        });
         if (lists.length > 0) {
             localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(lists));
-        } else console.log('lists length was 0 or an incorrect value');
+        }
     }
 
     function requestCategoriesList() {

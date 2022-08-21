@@ -3,11 +3,13 @@
     max-height: 1000px;
     display: flex;
     flex-direction: column-reverse;
-    margin-top: 10%;
-    margin-left: 96px;
+    margin-top: 1rem;
+    margin-left: 6rem;
     background-color: var(--accent-black);
     border-radius: 16px;
     box-shadow: 0 12px 12px rgba(0,0,0,.4);
+    grid-column: 1;
+    grid-row: 2;
 }
 
 .content-panel .input-container {

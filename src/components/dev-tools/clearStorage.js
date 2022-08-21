@@ -10,11 +10,9 @@ const buttonDeleteStorage = () => {
     btnContainer.textContent = 'Delete Storage';
 
     function deleteStorage() {
-        console.log('deleting storage')
         StorageAPI.deleteAllLists();
         DOMManip.refreshPage();
-    }
-    
+    }   
 
     return btnContainer;
 }   
