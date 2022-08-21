@@ -1,8 +1,22 @@
-.hover-pointer:hover {
-    cursor: pointer;
-}
+
 
 .btn-delete-lists {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
     align-self: flex-end;
-    margin-top: 90%;
+    justify-self: end;
+    margin-right: 2rem;
+    margin-bottom: 2rem;
+    background-color: var(--grey-accent);
+    color: var(--off-white);
+    height: 3rem;
+    width: 8rem;
+    transition: background-color .6s;
+}
+
+.hover-pointer:hover {
+    cursor: pointer;
+    background-color: #515050;
 }

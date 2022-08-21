@@ -1,5 +1,9 @@
 import './taskList.css';
+import TaskObject from '../../utils/TaskObject.js';
+import ListObject from '../../utils/ListObject.js';
 import TaskItem from '../taskItem/taskItem.js';
+import DOMManip from '../../utils/DOMManip.js';
+import StorageAPI from '../../utils/storageUtils.js';
 
 /* 
     A set of components used in creating the primary Task List.
@@ -44,13 +48,21 @@ function InputAddTask() {
     const input = document.createElement('input');
     input.type = "text";
     input.id = 'input';
+    input.addEventListener('keydown', (e) => {
+        if(e.key == 'Enter') {
+            addTaskToList();
+        }
+    });
     containerInput.appendChild(input);
 
     const btnSubmit = document.createElement('button');
     btnSubmit.classList.add("input-submit", "hover-pointer");
+    btnSubmit.id = 'btn-submit';
     const arrowSymbol = document.createElement('i');
     arrowSymbol.classList.add("ri-arrow-up-line", "hover-pointer");
     btnSubmit.appendChild(arrowSymbol);
+    
+    btnSubmit.addEventListener('click', addTaskToList);
     containerInput.appendChild(btnSubmit);
 
     return containerInput;
@@ -73,12 +85,24 @@ function populateList() {
     return listContainer;
 }
 
-function refreshTaskList(taskList) {
-    clearListDOM();
-    populateList(taskList);
-} 
+// Subroutine for task input event listeners.
+function addTaskToList() {
+    let mInput = document.getElementById('input');
+    if (mInput.value.length === undefined || mInput.value.length <= 2) {
+        alert("Please enter in sufficient information.");
+        return;
+    }
 
+    let newTask = TaskObject(mInput.value, lListItem.category, '11/11/31');
+    mInput.value = '';
+    DOMManip.addTaskToListDOM(newTask);
+
+    // Update this list in storage
+    lListItem.tasks.push(newTask);
+
+    StorageAPI.updateList(lListItem);
+}
 
 export {
-    TaskListContainer,
+    TaskListContainer
 };
